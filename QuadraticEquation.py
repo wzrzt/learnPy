@@ -10,17 +10,25 @@ class QuadraticEquation:
         self.__c = c
 
     def getDescriminant(self):
-        print("b^2 - 4 * a * c = %s" % (self.__b ** 2 - 4 * self.__a * self.__c))
+        return self.__b ** 2 - 4 * self.__a * self.__c
+
+    def theEquationBody(self):
+        equationbody = "%+d * x^2 %+d * x %+d = 0" % (self.__a, self.__b, self.__c)
+        return equationbody
 
     def getRoot(self):
         if (self.__b ** 2 - 4 * self.__a * self.__c) >= 0:
-            print((0 - self.__b - math.sqrt(self.__b ** 2 - 4 * self.__a * self.__c))/(2 * self.__a),
-                  (0 - self.__b + math.sqrt(self.__b ** 2 - 4 * self.__a * self.__c))/(2 * self.__a))
+            root1 = (0 - self.__b - math.sqrt(self.__b ** 2 - 4 * self.__a * self.__c))/(2 * self.__a)
+            root2 = (0 - self.__b + math.sqrt(self.__b ** 2 - 4 * self.__a * self.__c))/(2 * self.__a)
+            return root1, root2
         else:
             return "The Equation has none roots"
 
 if __name__ == "__main__":
     a,b,c = eval(input("Type in 3 numbers: "))
     equation1 = QuadraticEquation(a=a, b=b, c=c)
-    equation1.getDescriminant()
-    equation1.getRoot()
+    print(equation1.theEquationBody())
+    print(equation1.getDescriminant())
+    print(equation1.getRoot())
+
+
